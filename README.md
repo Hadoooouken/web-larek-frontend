@@ -99,7 +99,7 @@ submitOrder(orderData: IOrder): Promise<object>;
 }
 ```
 
-модель данных корзины
+Модель данных корзины
 ```
 export interface IBasketDataModel {
 addItem(item: Partial<IItem>): void;
@@ -109,7 +109,7 @@ total: number;
 }
 ```
 
-представление корзины
+Представление корзины
 ```
 export interface IBasketUI {
 addItem(item: HTMLElement, itemId: string, sum: number): void;
@@ -118,7 +118,7 @@ clear(): void;
 }
 ```
 
-интерфейс эмиттера
+Интерфейс эмиттера
 
 ```
 export interface IEventEmitter<T extends string> {
@@ -126,7 +126,7 @@ emit: (event: T, data?: unknown) => void;
 }
 ```
 
-данные которые мы передаем в эмиттер
+Данные которые мы передаем в эмиттер
 
 ```
 export interface IEventData {
@@ -143,7 +143,7 @@ data?: Partial<IItem>;
 
 ## Классы
 
-EventEmitter 
+# EventEmitter 
 
 Класс связывает модель данных и модель представления, класс предоставляет механизмы для подписки на события и оповещения подписчиков о их возникновении.
 Методы класса включают:
@@ -155,7 +155,7 @@ EventEmitter
 - `offAll` — удаляет обработчики со всех событий.
 - `trigger` — создает специальный коллбек, который при вызове активирует событие.
 
-Api
+# Api
 
 Класс представляет собой универсальный инструмент для взаимодействия с веб-сервисами. Он инкапсулирует логику HTTP-запросов, обеспечивая удобный интерфейс для отправки и получения данных.
 
