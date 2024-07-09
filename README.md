@@ -60,7 +60,7 @@ price: number;
 }
 ```
 
-### Интерфейс Заказа
+#### Интерфейс заказа
 ```
 interface IOrder {
 payment: PaymentType;
@@ -72,12 +72,12 @@ total: number;
 }
 ```
 
-### Выбор способа оплаты
+#### Выбор способа оплаты
 ```
 type PaymentType = 'online' | 'cash';
 ```
 
-### Модель данных заказа
+#### Модель данных заказа
 ```
 interface IOrderDataModel {
 buyerFullData: IOrder;
@@ -90,7 +90,7 @@ total: number;
 }
 ```
 
-### Данные апи сервера
+#### Данные апи сервера
 ```
 export interface IApiData {
 fetchProductCards(): Promise<{ items: IItem[] }>;
@@ -99,7 +99,7 @@ submitOrder(orderData: IOrder): Promise<object>;
 }
 ```
 
-### Модель данных корзины
+#### Модель данных корзины
 ```
 export interface IBasketDataModel {
 addItem(item: Partial<IItem>): void;
@@ -109,7 +109,7 @@ total: number;
 }
 ```
 
-### Представление корзины
+#### Представление корзины
 ```
 export interface IBasketUI {
 addItem(item: HTMLElement, itemId: string, sum: number): void;
@@ -118,7 +118,7 @@ clear(): void;
 }
 ```
 
-### Интерфейс эмиттера
+#### Интерфейс эмиттера
 
 ```
 export interface IEventEmitter<T extends string> {
@@ -126,7 +126,7 @@ emit: (event: T, data?: unknown) => void;
 }
 ```
 
-### Данные которые мы передаем в эмиттер
+#### Данные которые мы передаем в эмиттер
 
 ```
 export interface IEventData {
@@ -135,7 +135,7 @@ data?: Partial<IItem>;
 }
 ```
 
-## Архитектура приложения
+#### Архитектура приложения
 
 Код приложения разделён на 3 слоя согласно парадигме MVP:
 
@@ -143,7 +143,7 @@ data?: Partial<IItem>;
 
 ## Классы
 
-### EventEmitter 
+#### EventEmitter 
 
 Класс связывает модель данных и модель представления, класс предоставляет механизмы для подписки на события и оповещения подписчиков о их возникновении.
 Методы класса включают:
@@ -155,7 +155,7 @@ data?: Partial<IItem>;
 - `offAll` — удаляет обработчики со всех событий.
 - `trigger` — создает специальный коллбек, который при вызове активирует событие.
 
-### Api
+#### Api
 
 Класс представляет собой универсальный инструмент для взаимодействия с веб-сервисами. Он инкапсулирует логику HTTP-запросов, обеспечивая удобный интерфейс для отправки и получения данных.
 
