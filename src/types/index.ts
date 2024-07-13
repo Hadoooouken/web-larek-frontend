@@ -10,14 +10,9 @@ interface IItem {
 }
 
 // интерфейс заказа
-export interface IOrder {
-	payment: PaymentType;
-	address: string;
-	email: string;
-	phone: string;
-	items: string[];
-	total: number;
-}
+// export interface IOrder {
+
+// }
 
 //выбор наличные или онлайн
 type PaymentType = 'online' | 'cash';
@@ -25,15 +20,13 @@ type PaymentType = 'online' | 'cash';
 //модель данных заказа
 
 export interface IOrderDataModel {
-	buyerFullData: IOrder;
-	basket: IBasketDataModel
-	// payment: PaymentType;
-	// address: string;
-	// email: string;
-	// phone: string;
-	// items: string[];
-	// total: number;
-	
+	payment: PaymentType;
+	address: string;
+	email: string;
+	phone: string;
+	items: string[];
+	total: number;
+
 }
 
 // данные апи
@@ -41,7 +34,7 @@ export interface IOrderDataModel {
 export interface IApiData {
 	fetchProductCards(): Promise<{ items: IItem[] }>;
 	fetchProductCard(id: string): Promise<IItem>;
-	submitOrder(orderData: IOrder): Promise<object>;
+	submitOrder(orderData: IOrderDataModel): Promise<object>;
 }
 
 //модель данных корзины
@@ -49,16 +42,13 @@ export interface IBasketDataModel {
 	addItem(item: Partial<IItem>): void;
 	removeItem(item: Partial<IItem>): void;
 	clear(): void;
-	// total: number;
 	getItems(): IItem[]; // метод для получения списка товаров
 	getTotal(): number; //  метод для получения общей стоимости
 }
 
 //представление корзины
-export interface IBasketUI {
-	addItem(item: HTMLElement, itemId: string, sum: number): void;
-	removeItem(itemId: string): void;
-	clear(): void;
+export interface IBasketViev {
+	render(data?: unknown): HTMLElement;
 }
 
 //интерфейс эмиттера
@@ -69,7 +59,29 @@ export interface IEventEmitter<T extends string> {
 
 // данные которые мы передаем в эмиттер
 export interface IEventData {
-    element: HTMLElement;
-    data?: Partial<IItem>;
-  }
+	element: HTMLElement;
+	data?: Partial<IItem>;
+}
+
+export interface IView {
+	render(data?: unknown): HTMLElement;
+	toggleClass(element: HTMLElement, className: string): void;
+}
+
+export interface IModalView {
+	openModal: (element: HTMLElement) => void;
+	closeModal: () => void;
+}
+
+
+
+type EventName = string | RegExp;
+
+type Subscriber = Function;
+
+type EmitterEvent = {
+	eventName: string;
+	data: unknown;
+};
+
 
