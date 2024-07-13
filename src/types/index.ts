@@ -26,12 +26,14 @@ type PaymentType = 'online' | 'cash';
 
 export interface IOrderDataModel {
 	buyerFullData: IOrder;
-	payment: PaymentType;
-	address: string;
-	email: string;
-	phone: string;
-	items: string[];
-	total: number;
+	basket: IBasketDataModel
+	// payment: PaymentType;
+	// address: string;
+	// email: string;
+	// phone: string;
+	// items: string[];
+	// total: number;
+	
 }
 
 // данные апи
@@ -47,7 +49,9 @@ export interface IBasketDataModel {
 	addItem(item: Partial<IItem>): void;
 	removeItem(item: Partial<IItem>): void;
 	clear(): void;
-	total: number;
+	// total: number;
+	getItems(): IItem[]; // метод для получения списка товаров
+	getTotal(): number; //  метод для получения общей стоимости
 }
 
 //представление корзины
@@ -68,3 +72,4 @@ export interface IEventData {
     element: HTMLElement;
     data?: Partial<IItem>;
   }
+
