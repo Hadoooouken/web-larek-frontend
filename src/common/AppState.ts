@@ -25,7 +25,11 @@ export class AppState extends Model<IAppInfo> {
 	}
 
 	deleteFromBasket(item: IItem) {
-		this.basket = this.basket.filter((basketItem) => basketItem.id !== item.id);
+		const indexElement = this.basket.findIndex(
+			(basketItem) => basketItem.id === item.id
+		);
+		this.basket.splice(indexElement, 1);
+
 		this.emitChanges('basket:changed', this.basket);
 	}
 

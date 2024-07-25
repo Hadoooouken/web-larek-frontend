@@ -66,18 +66,13 @@ events.on('items:changed', () => {
 	});
 });
 
-// Открыть товар
 events.on('productCard:select', (item: IItem) => {
 	const productCard: Product = new Product(
 		`card`,
 		cloneTemplate(productCardPreviewTemplate),
 		{
 			onClick: () => {
-				if (!appState.isInBasket(item)) {
-					appState.addToBasket(item);
-				} else {
-					appState.deleteFromBasket(item);
-				}
+				appState.addToBasket(item);
 				productCard.inBasket = appState.isInBasket(item);
 			},
 		}

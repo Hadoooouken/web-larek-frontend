@@ -98,7 +98,7 @@ export class Product extends Component<IItem> {
 	}
 
 	set inBasket(isInBasket: boolean) {
-		this.setText(this._button, isInBasket ? 'Убрать' : 'В корзину');
+		this.setText(this._button, isInBasket ? 'Добавить еще' : 'В корзину');
 	}
 
 	set index(value: number) {
